@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Prihlásenie | Libreka</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #fff6f7;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #2d2929;
+        }
+
+        .login-wrapper {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 40px 15px;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 440px;
+
+            background-color: white;
+
+            border-radius: 6px;
+
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+
+            overflow: hidden;
+        }
+
+        .login-content {
+            padding: 40px;
+        }
+
+        .login-title {
+            font-size: 27px;
+            font-weight: 700;
+
+            margin-bottom: 28px;
+        }
+
+        .form-label {
+            font-size: 13px;
+            font-weight: 600;
+
+            color: #5f5557;
+
+            text-transform: uppercase;
+
+            margin-bottom: 7px;
+        }
+
+        .required {
+            color: #d46a7d;
+        }
+
+        .form-control {
+            height: 45px;
+
+            border: 1px solid #cfc7c9;
+
+            border-radius: 4px;
+        }
+
+        .form-control:focus {
+            border-color: #d46a7d;
+
+            box-shadow: 0 0 0 0.15rem rgba(212, 106, 125, 0.15);
+        }
+
+        .password-group {
+            display: flex;
+        }
+
+        .password-group input {
+            border-radius: 4px 0 0 4px;
+        }
+
+        .password-button {
+            width: 48px;
+
+            background-color: white;
+
+            border: 1px solid #cfc7c9;
+            border-left: none;
+
+            border-radius: 0 4px 4px 0;
+
+            cursor: pointer;
+        }
+
+        .password-button:hover {
+            background-color: #fff0f3;
+        }
+
+        .remember-box {
+            margin-top: 12px;
+            margin-bottom: 22px;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .remember-box input {
+            width: 19px;
+            height: 19px;
+
+            accent-color: #d46a7d;
+        }
+
+        .remember-box label {
+            font-size: 15px;
+        }
+
+        .login-button {
+            width: 100%;
+
+            background-color: #d46a7d;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 4px;
+
+            padding: 12px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            box-shadow: 0 3px 7px rgba(0,0,0,0.15);
+        }
+
+        .login-button:hover {
+            background-color: #b64f63;
+            color: white;
+        }
+
+        .forgot-password {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 16px;
+            margin-bottom: 25px;
+
+            color: #b64f63;
+
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .forgot-password:hover {
+            color: #913c4c;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            margin: 25px 0;
+
+            color: #777;
+
+            font-size: 13px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+
+            height: 1px;
+
+            background-color: #ddd;
+
+            flex: 1;
+        }
+
+        .social-button {
+            width: 100%;
+
+            height: 44px;
+
+            background-color: white;
+
+            border: 1px solid #cfc7c9;
+
+            border-radius: 4px;
+
+            margin-bottom: 10px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 10px;
+
+            color: #2d2929;
+        }
+
+        .social-button:hover {
+            background-color: #fff0f3;
+            border-color: #d46a7d;
+        }
+
+        .google-icon {
+            font-size: 21px;
+            font-weight: 700;
+
+            color: #d94a3a;
+        }
+
+        .register-section {
+            border-top: 1px solid #e5dfe0;
+
+            text-align: center;
+
+            padding: 30px 20px;
+        }
+
+        .register-section p {
+            margin: 0;
+
+            font-size: 15px;
+        }
+
+        .register-section a {
+            color: #d46a7d;
+
+            font-weight: 700;
+
+            text-decoration: none;
+        }
+
+        .register-section a:hover {
+            color: #b64f63;
+        }
+
+        .back-home {
+            text-align: center;
+
+            margin-bottom: 20px;
+        }
+
+        .back-home a {
+            color: #777;
+            text-decoration: none;
+
+            font-size: 14px;
+        }
+
+        .back-home a:hover {
+            color: #d46a7d;
+        }
+
+        @media (max-width: 576px) {
+            .login-content {
+                padding: 28px 22px;
+            }
+
+            .login-title {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-wrapper">
+
+        <div>
+
+            <div class="back-home">
+                <a href="{% url 'home' %}">
+                    ← Späť na Libreku
+                </a>
+            </div>
+
+
+            <div class="login-card">
+
+                <div class="login-content">
+
+                    <h1 class="login-title">
+                        Prihlásenie s heslom
+                    </h1>
+
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <!-- EMAIL -->
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                E-mail
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="email"
+                                name="email"
+                                class="form-control"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- HESLO -->
+
+                        <div class="mb-2">
+
+                            <label class="form-label">
+                                Heslo
+                            </label>
+
+                            <div class="password-group">
+
+                                <input
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    class="form-control"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    class="password-button"
+                                    onclick="showPassword()"
+                                >
+                                    👁
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ZAPAMATAT -->
+
+                        <div class="remember-box">
+
+                            <input
+                                type="checkbox"
+                                id="remember"
+                            >
+
+                            <label for="remember">
+                                Zapamätať prihlásenie
+                            </label>
+
+                        </div>
+
+
+                        <!-- LOGIN -->
+
+                        <button
+                            type="submit"
+                            class="login-button"
+                        >
+                            Prihlásiť sa
+                        </button>
+
+
+                        <!-- ZABUDNUTE HESLO -->
+
+                        <a
+                            href="#"
+                            class="forgot-password"
+                        >
+                            Zabudli ste heslo?
+                        </a>
+
+
+                        <!-- ODDELENIE -->
+
+                        <div class="divider">
+                            ALEBO
+                        </div>
+
+
+                        <!-- GOOGLE -->
+
+                        <button
+                            type="button"
+                            class="social-button"
+                        >
+
+                            <span class="google-icon">
+                                G
+                            </span>
+
+                            Prihlásiť sa cez Google
+
+                        </button>
+
+
+
+
+                    </form>
+
+                </div>
+
+
+                <!-- REGISTRACIA -->
+
+                <div class="register-section">
+
+                    <p>
+                        Nemáte účet?
+
+                        <a href="#">
+                            Zaregistrujte sa
+                        </a>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Libreka{% endblock %}</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #fffafa;
+            color: #2d2929;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* =========================
+           HORNÁ MALÁ LIŠTA
+        ========================= */
+
+        .top-bar {
+            background-color: #fff0f3;
+            border-bottom: 1px solid #f1d8de;
+            padding: 7px 0;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 24px;
+            font-size: 14px;
+        }
+
+        .top-bar a {
+            color: #5f5658;
+        }
+
+        .top-bar a:hover {
+            color: #d46a7d;
+        }
+
+
+        /* =========================
+           HLAVNÝ NAVBAR
+        ========================= */
+
+        .main-navbar {
+            background-color: white;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1d8de;
+        }
+
+        .navbar-inner {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+
+        /* =========================
+           LOGO
+        ========================= */
+
+        .logo {
+            font-size: 31px;
+            font-weight: 800;
+            color: #d46a7d;
+            white-space: nowrap;
+        }
+
+        .logo:hover {
+            color: #b64f63;
+        }
+
+        .logo-mark {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 43px;
+            height: 43px;
+
+            background-color: #d46a7d;
+            color: white;
+
+            border-radius: 50%;
+            margin-right: 8px;
+
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           MENU
+        ========================= */
+
+        .main-menu {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex: 1;
+        }
+
+        .main-menu a {
+            color: #2d2929;
+            font-weight: 700;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .main-menu a:hover {
+            color: #d46a7d;
+        }
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-box {
+            display: flex;
+            width: 280px;
+        }
+
+        .search-box input {
+            background-color: #fffafa;
+            color: #2d2929;
+
+            border: 2px solid #d46a7d;
+            border-right: none;
+
+            height: 44px;
+
+            border-radius: 6px 0 0 6px;
+            padding-left: 14px;
+        }
+
+        .search-box input::placeholder {
+            color: #8c8184;
+        }
+
+        .search-box input:focus {
+            background-color: white;
+            color: #2d2929;
+            box-shadow: none;
+            border-color: #b64f63;
+        }
+
+        .search-button {
+            height: 44px;
+            width: 50px;
+
+            border: none;
+
+            background-color: #d46a7d;
+            color: white;
+
+            border-radius: 0 6px 6px 0;
+
+            font-size: 18px;
+        }
+
+        .search-button:hover {
+            background-color: #b64f63;
+        }
+
+
+        /* =========================
+           IKONY
+        ========================= */
+
+        .nav-icons {
+            display: flex;
+            gap: 17px;
+            align-items: center;
+        }
+
+        .nav-icon {
+            color: #2d2929;
+            font-size: 22px;
+        }
+
+        .nav-icon:hover {
+            color: #d46a7d;
+        }
+
+
+        /* =========================
+           FAREBNÝ PÁS
+        ========================= */
+
+        .color-line {
+            height: 5px;
+
+            background: linear-gradient(
+                to right,
+                #d46a7d 0%,
+                #d46a7d 20%,
+
+                #e5a5b0 20%,
+                #e5a5b0 40%,
+
+                #b786a6 40%,
+                #b786a6 60%,
+
+                #f0b8c2 60%,
+                #f0b8c2 80%,
+
+                #b64f63 80%,
+                #b64f63 100%
+            );
+        }
+
+
+        /* =========================
+           OBSAH
+        ========================= */
+
+        main {
+            min-height: 75vh;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background-color: #2d2929;
+            color: white;
+            margin-top: 60px;
+            padding: 45px 0 25px;
+        }
+
+        footer h4 {
+            color: #e48292;
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        footer h5 {
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #ccc;
+        }
+
+        footer a {
+            display: block;
+            color: #ddd;
+            margin-bottom: 8px;
+        }
+
+        footer a:hover {
+            color: #e48292;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #514b4d;
+            margin-top: 30px;
+            padding-top: 18px;
+            color: #aaa;
+            font-size: 13px;
+            text-align: center;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1200px) {
+            .navbar-inner {
+                flex-wrap: wrap;
+            }
+
+            .main-menu {
+                order: 3;
+                width: 100%;
+                overflow-x: auto;
+            }
+
+            .search-box {
+                margin-left: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                display: none;
+            }
+
+            .navbar-inner {
+                gap: 15px;
+            }
+
+            .search-box {
+                width: 100%;
+                order: 3;
+            }
+
+            .main-menu {
+                order: 4;
+            }
+
+            .logo {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HORNÁ MALÁ LIŠTA -->
+    <div class="top-bar">
+        <div class="container">
+
+            <div class="top-bar-content">
+
+                <a href="#">O projekte</a>
+
+                <a href="#">Kontakt</a>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- HLAVNÝ NAVBAR -->
+    <nav class="main-navbar">
+
+        <div class="container">
+
+            <div class="navbar-inner">
+
+
+                <!-- LOGO -->
+                <a href="{% url 'home' %}" class="logo">
+
+                    <span class="logo-mark">
+                        L
+                    </span>
+
+                    Libreka
+
+                </a>
+
+
+                <!-- MENU -->
+                <div class="main-menu">
+
+                    <a href="#">
+                        Knihy
+                    </a>
+
+                    <a href="{% url 'profile' %}">
+                        Moja knižnica
+                    </a>
+
+                    <a href="#">
+                        Prečítané
+                    </a>
+
+                    <a href="#">
+                        Chcem prečítať
+                    </a>
+
+                    <a href="#">
+                        Odporúčania
+                    </a>
+
+                </div>
+
+
+                <!-- SEARCH -->
+                <form class="search-box">
+
+                    <input
+                        type="search"
+                        class="form-control"
+                        placeholder="Vyhľadávanie"
+                    >
+
+                    <button
+                        class="search-button"
+                        type="submit"
+                    > 
+                        🔍
+                    </button>
+
+                </form>
+
+
+                <!-- IKONY -->
+                <div class="nav-icons">
+
+                    <a
+                        href="{% url 'login' %}"
+                        class="nav-icon"
+                        title="Profil"
+                    >
+                        ♙
+                    </a>
+
+                    <a
+                        href="{% url 'profile' %}"
+                        class="nav-icon"
+                        title="Moja knižnica"
+                    >
+                        ♡
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- RUŽOVÝ PÁS -->
+    <div class="color-line"></div>
+
+
+    <!-- OBSAH STRÁNOK -->
+    <main>
+
+        {% block content %}
+        <div class= "container padding-top:10rem" >
+              <div class="row d-flex justify-content-evenly">
+               
+                    <div class="card" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+
+        {% endblock %}
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="container">
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <h4>
+                        Libreka
+                    </h4>
+
+                    <p>
+                        Online aplikácia pre knihy a vlastnú knižnicu.
+                    </p>
+
+                </div>
+
+
+
+
+
+            <div class="footer-bottom">
+                © 2026 Libreka
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+</body>
+</html>

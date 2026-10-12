@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Libreka{% endblock %}</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous"
+    >
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #fffafa;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #2d2929;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .page-wrapper {
+            padding: 50px 0 80px;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .page-description {
+            color: #777;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-line {
+            width: 100%;
+            height: 4px;
+            background-color: #d46a7d;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .saved-books-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 28px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            margin-bottom: 50px;
+        }
+
+        .books-row {
+            display: flex;
+            gap: 28px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .book-item {
+            min-width: 145px;
+            width: 145px;
+        }
+
+        .book-cover {
+            width: 145px;
+            height: 215px;
+            background: #f3d8dd;
+            border-radius: 6px;
+            border: 1px solid #d9bfc4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #9a6b74;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .book-name {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .book-author {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 6px;
+        }
+
+        .book-rating {
+            color: #d69b22;
+            letter-spacing: 1px;
+        }
+
+        .ratings-section {
+            margin-top: 20px;
+        }
+
+        .rating-card {
+            background-color: white;
+            border-radius: 9px;
+            padding: 22px;
+            height: 100%;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .rating-header {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .mini-cover {
+            width: 65px;
+            height: 95px;
+            background-color: #f3d8dd;
+            border: 1px solid #d9bfc4;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .rating-info h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .rating-info p {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 6px;
+        }
+
+        .stars {
+            color: #d69b22;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            color: #555;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+            padding-top: 14px;
+        }
+
+        .detail-link {
+            color: #d46a7d;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .detail-link:hover {
+            color: #b64f63;
+        }
+
+        @media (max-width: 768px) {
+            .page-wrapper {
+                padding: 35px 0 60px;
+            }
+
+            .page-title {
+                font-size: 27px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            .saved-books-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+        <div class="container">
+
+            <h1 class="page-title">
+                Moja knižnica
+            </h1>
+
+            <p class="page-description">
+                <h1 class="card-title text-center mb-4" style="font-family: 'Pinyon Script', cursive;">{{username}}</h1>
+            </p>
+
+
+            <!-- MOJE ULOŽENÉ KNIHY -->
+
+            <h2 class="section-title">
+                Moje uložené knihy
+            </h2>
+
+            <div class="section-line"></div>
+
+            <div class="saved-books-box">
+
+                <div class="books-row">
+
+                    <div class="book-item">
+                        <div class="book-cover">
+                            Obálka
+                        </div>
+
+                        <div class="book-name">
+                            Názov knihy
+                        </div>
+
+                        <div class="book-author">
+                            Autor
+                        </div>
+
+                        <div class="book-rating">
+                            ☆☆☆☆☆
+                        </div>
+                    </div>
+
+
+                    <div class="book-item">
+                        <div class="book-cover">
+                            Obálka
+                        </div>
+
+                        <div class="book-name">
+                            Názov knihy
+                        </div>
+
+                        <div class="book-author">
+                            Autor
+                        </div>
+
+                        <div class="book-rating">
+                            ☆☆☆☆☆
+                        </div>
+                    </div>
+
+
+                    <div class="book-item">
+                        <div class="book-cover">
+                            Obálka
+                        </div>
+
+                        <div class="book-name">
+                            Názov knihy
+                        </div>
+
+                        <div class="book-author">
+                            Autor
+                        </div>
+
+                        <div class="book-rating">
+                            ☆☆☆☆☆
+                        </div>
+                    </div>
+
+
+                    <div class="book-item">
+                        <div class="book-cover">
+                            Obálka
+                        </div>
+
+                        <div class="book-name">
+                            Názov knihy
+                        </div>
+
+                        <div class="book-author">
+                            Autor
+                        </div>
+
+                        <div class="book-rating">
+                            ☆☆☆☆☆
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MOJE HODNOTENIA -->
+
+            <div class="ratings-section">
+
+                <h2 class="section-title">
+                    Moje hodnotenia
+                </h2>
+
+                <div class="section-line"></div>
+
+                <div class="row g-4">
+
+                    <div class="col-lg-4 col-md-6">
+
+                        <div class="rating-card">
+
+                            <div class="rating-header">
+
+                                <div class="mini-cover"></div>
+
+                                <div class="rating-info">
+
+                                    <h4>
+                                        Názov knihy
+                                    </h4>
+
+                                    <p>
+                                        Autor
+                                    </p>
+
+                                    <div class="stars">
+                                        ☆☆☆☆☆
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <p class="review-text">
+                                Hodnotenie alebo poznámka ku knihe sa zobrazí tu.
+                            </p>
+
+                            <a href="#" class="detail-link">
+                                Zobraziť knihu →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-6">
+
+                        <div class="rating-card">
+
+                            <div class="rating-header">
+
+                                <div class="mini-cover"></div>
+
+                                <div class="rating-info">
+
+                                    <h4>
+                                        Názov knihy
+                                    </h4>
+
+                                    <p>
+                                        Autor
+                                    </p>
+
+                                    <div class="stars">
+                                        ☆☆☆☆☆
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <p class="review-text">
+                                Hodnotenie alebo poznámka ku knihe sa zobrazí tu.
+                            </p>
+
+                            <a href="#" class="detail-link">
+                                Zobraziť knihu →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-6">
+
+                        <div class="rating-card">
+
+                            <div class="rating-header">
+
+                                <div class="mini-cover"></div>
+
+                                <div class="rating-info">
+
+                                    <h4>
+                                        Názov knihy
+                                    </h4>
+
+                                    <p>
+                                        Autor
+                                    </p>
+
+                                    <div class="stars">
+                                        ☆☆☆☆☆
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <p class="review-text">
+                                Hodnotenie alebo poznámka ku knihe sa zobrazí tu.
+                            </p>
+
+                            <a href="#" class="detail-link">
+                                Zobraziť knihu →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous">
+    </script>
+
+</body>
+</html>
